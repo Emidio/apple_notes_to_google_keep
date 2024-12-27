@@ -36,11 +36,11 @@ You need your Google username (your Google email), and the master token to be ab
 
 https://accounts.google.com/EmbeddedSetup
 
-Enter your Google email address, [Next], your password, [Next], if you have 2 step verification enabled you should receive anotification, confir it's you, the you'll finally get a Welcome screem with [I agree] button. Click [I agree], then open your browser developer tools (ignore if you see the loading gif).
+Enter your Google email address, [Next], your password, [Next], if you have 2 step verification enabled you should receive anotification, confir it's you, the you'll finally get a Welcome screen with [I agree] button. Click [I agree], then open your browser developer tools (ignore if you see the loading gif).
 
 With Firefox, press F12, go to "Storage" menu on top, on the left expand cookies and copy the value of your oauth_token cookie. It should start with: `oauth2_4/`.
-To copy, just select the oauth_token line and double click on the value, then CTRL+C. You also need and "Android ID", you should use any hex string like: `0123456789abcdef`.
-I used the MAC address stripping the ":" and padidng some "0" at the beginning to reanch 16 characters. With the `oauth_token` yo can finally obtaing the master token, using this script (if you have docker installed):
+To copy, just select the oauth_token line and double click on the value, then CTRL+C. You also need an "Android ID", you should use any hex string like: `0123456789abcdef`.
+I used the MAC address stripping the ":" and padding some "0" at the beginning to reach 16 characters. With the `oauth_token` you can finally obtain the master token, using this script (if you have docker installed):
 ~~~
 docker run --rm -it --entrypoint /bin/sh python:3 -c 'pip install gpsoauth; python3 -c '\''print(__import__("gpsoauth").exchange_token(input("Email: "), input("OAuth Token: "), input("Android ID: ")))'\'
 ~~~
