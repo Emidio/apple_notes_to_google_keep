@@ -30,9 +30,7 @@ https://gist.github.com/sliceofbytes/f5eab8911c761ff6760362beb17e6477
 
 The script is a little old, and the username/password login is no more supported by Google. Also, I got a problem with unicode characters in notes, so I slightly modified it to use the new authentication method and handle unicode chracters in notes.
 
-Here's the code:
-
-
+Here's the code: [get_mastertoken.py](https://github.com/Emidio/apple_notes_to_google_keep/blob/main/get_mastertoken.py)
 
 You need your Google username (your Google email), and the master token to be able to upload the text files in Google Keep. To obtain the master token, the easiest way is to use your browser and open this link:
 
