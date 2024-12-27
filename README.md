@@ -42,7 +42,7 @@ Enter your Google email address, [Next], your password, [Next], if you have 2 st
 
 With Firefox, press F12, go to "Storage" menu on top, on the left expand cookies and copy the value of your oauth_token cookie. It should start with: `oauth2_4/`.
 To copy, just select the oauth_token line and double click on the value, then CTRL+C. You also need and "Android ID", you should use any hex string like: `0123456789abcdef`.
-I used the MAC address stripping the ":" and padidng some "0" at the beginning to reanch 16 characters. With the `oauth_token` yo can finally obtaing the master token, using this script:
+I used the MAC address stripping the ":" and padidng some "0" at the beginning to reanch 16 characters. With the `oauth_token` yo can finally obtaing the master token, using this script (if you have docker installed):
 ~~~
 docker run --rm -it --entrypoint /bin/sh python:3 -c 'pip install gpsoauth; python3 -c '\''print(__import__("gpsoauth").exchange_token(input("Email: "), input("OAuth Token: "), input("Android ID: ")))'\'
 ~~~
