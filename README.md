@@ -38,12 +38,10 @@ You need your Google username (your Google email), and the master token to be ab
 
 https://accounts.google.com/EmbeddedSetup
 
-Enter your Google email address, [Next], your password, [Next], if you have 2 step verification enabled you should receive anotification, confir it's you, the you'll finally get a Welcome screem with [I agree] button. Click [I agree], then open your browser developer tools.
+Enter your Google email address, [Next], your password, [Next], if you have 2 step verification enabled you should receive anotification, confir it's you, the you'll finally get a Welcome screem with [I agree] button. Click [I agree], then open your browser developer tools (ignore if you see the loading gif).
 
-With Firefox, press F12, go to "Storage" menu on top, on the left expand cookies and copy the value of your oauth_token cookie. It should start with:
-`oauth2_4/`
-To copy, just select the oauth_token line and double click on the value, then CTRL+C. You also need and "Android ID", you should use any hex string like:
-`0123456789abcdef`
+With Firefox, press F12, go to "Storage" menu on top, on the left expand cookies and copy the value of your oauth_token cookie. It should start with: `oauth2_4/`.
+To copy, just select the oauth_token line and double click on the value, then CTRL+C. You also need and "Android ID", you should use any hex string like: `0123456789abcdef`.
 I used the MAC address stripping the ":" and padidng some "0" at the beginning to reanch 16 characters. With the `oauth_token` yo can finally obtaing the master token, using this script:
 ~~~
 docker run --rm -it --entrypoint /bin/sh python:3 -c 'pip install gpsoauth; python3 -c '\''print(__import__("gpsoauth").exchange_token(input("Email: "), input("OAuth Token: "), input("Android ID: ")))'\'
@@ -58,15 +56,10 @@ pithon3 get_mastertoken.py
 ~~~
 Pay attention, the `oauth_token` lasts a few minutes, so you need to generate your master token quickly after `oauth_token` procedure.
 
-You'll get a string starting with:
-~~~
-aas_et/
-~~~
-
-Now put your email and master token value in this script, and run it from the folder with the txt files of your notes:
+You'll get a string starting with: `aas_et/`. Now put your email and master token value in this script, and run it from the folder with the txt files of your notes:
 ~~~
 pithon3 keep_import.py
 ~~~
-
+Now you have your Apple notes imported in Google Keep. Remember that running multiple times the script on the same notes will import multiple copies of the notes. Also, Google could limit the number of notes to be imported. If so, just limit the txt files number in the import folder to 100 or 200.
 
 
